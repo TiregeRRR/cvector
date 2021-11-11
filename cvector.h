@@ -71,7 +71,7 @@ int inBounds(int used, int index);
 		}                                               \
 	}while(0)
 
-// // Delete an element on given range (start, end] and shift all elements 
+// // Delete an element on given range [start, end) and shift all elements 
 #define vectorEraseRange(var, start, end)                   \
     do{                                                     \
         int diff = end - start;                         \
