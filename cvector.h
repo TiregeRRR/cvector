@@ -20,15 +20,15 @@ int inBounds(int used, int index);
 // Create a struct with name of a variable and call vectorInit
 #define vectorCreate(type, varName)     \
     struct varName {                    \
-        size_t capacity;	            \
-        size_t used;		            \
-        type* array;		            \
+        size_t capacity;                \
+        size_t used;                    \
+        type* array;                    \
     } varName;                          \
     vectorInit(varName)
  
 // Reallocate var.array with given length
-#define vectorResize(var, newLength)  					            \
-    void* ptr = realloc(var.array, newLength * sizeof(*var.array));	\
+#define vectorResize(var, newLength)                                \
+    void* ptr = realloc(var.array, newLength * sizeof(*var.array)); \
     if (!(ptr == NULL)){                                            \
         var.array = ptr;                                            \
         var.capacity = newLength;                                   \
@@ -76,13 +76,13 @@ int inBounds(int used, int index);
 // // Delete an element on given range [start, end) and shift all elements 
 #define vectorEraseRange(var, start, end)                   \
     do{                                                     \
-        int diff = end - start;                         \
+        int diff = end - start;                             \
         if(start >= 0 && end < var.used){                   \
-            for(int i = start; i < var.used - diff; i++){	\
+            for(int i = start; i < var.used - diff; i++){   \
                 var.array[i] = var.array[i + diff];         \
-            }						                        \
-            var.used-=diff;					                \
-        }							                        \
+            }                                               \
+            var.used-=diff;                                 \
+        }                                                   \
     }while(0)
 
 // Copy all elements from one vector to another
@@ -144,3 +144,6 @@ int inBounds(int used, int index);
         var2.used = tmpUsed;                \
         var2.array = tmpPointer;            \
     }while(0)
+
+#define vectorShrinkToFit(var)\
+    vectorResize(var, var.used)

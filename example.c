@@ -81,9 +81,14 @@ int main(){
 		printf("%d ", *it); // Iterator syntax
 	} printf("\tvectorClear\n");
 
-
+    
+    // vectorShrinkToFit 
+    printf("%d\n", vec.capacity);
+    vectorShrinkToFit(vec);
+    printf("%d\n", vec.capacity);
     vectorFree(vec);// Free memory
     vectorFree(vec1);
 
+    getchar();
 	return 0;
 }
