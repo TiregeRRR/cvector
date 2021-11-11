@@ -74,9 +74,9 @@ int inBounds(int used, int index);
 // // Delete an element on given range (start, end] and shift all elements 
 #define vectorEraseRange(var, start, end)                   \
     do{                                                     \
-        int diff = end - start + 1;                         \
+        int diff = end - start;                         \
 		if(start >= 0 && end < var.used){                   \
-			for(int i = start + 1; i < var.used - diff; i++){	\
+			for(int i = start; i < var.used - diff; i++){	\
 				var.array[i] = var.array[i + diff];         \
 			}						                        \
 			var.used-=diff;					                \
